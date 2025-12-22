@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<html lang="ja">
+<header>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&family=Zen+Old+Mincho&display=swap" rel="stylesheet">
+<style>
+.zen-old-mincho-regular {
+  font-family: "Zen Old Mincho", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.zen-maru-gothic-regular {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1[id], h2[id], h3[id] {
+    scroll-margin-top: 100px; 
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: "Zen Old Mincho Regular";
+}
+img{
+    width: 300px;
+}
+h1{
+    font-size: 25px;
+    margin-bottom: 2px;
+    display:inline;
+}
+h2{
+    font-family: "Zen Maru Gothic Light";
+    font-size: 20px;
+    margin-left: 4px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    display:inline;
+}
+h3{
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+h4{
+    font-size: 15px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+}
+p{
+    font-size: 19px;
+    margin-top: 3px;
+    letter-spacing: 1px;
+    letter-spacing: -1px;
+}
+.種別{
+    font-size: 14px;
+}
+.単位{
+    font-size: 16px;
+}
+div{
+    font-size: 19px;
+    margin-top: 0px;
+}
+.目次 {
+    font-family: "Zen Old Mincho Regular";
+    display: inline-block; 
+    margin-top: 30px;
+}
+.container {
+    margin-top: -15px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.column {
+    display: block;
+}
+@media(max-width:600px) {
+    .wrap-sidebar {
+        display: block !important;
+        margin-right: 0 !important;
+    }
+
+    .contentsX {
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        width: auto !important;
+    }
+
+    .sidebar {
+        display: none !important;
+    }
+    h1 {
+        display:inline;
+        font-size: 24px;
+    }
+    h2 {
+        display:inline;
+        font-size: 17px;
+    }
+    h3{
+        font-family: "Zen Maru Gothic Light";
+        font-size: 16px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    h4{
+        font-family: "Zen Maru Gothic Light";
+        font-size: 15px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+    }
+    p{
+        font-size: 13px;
+        margin-top: 3px;
+        letter-spacing: 1px;
+        letter-spacing: -1px;
+    }
+}
+.wrap-sidebar {
+    margin-right: 8%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 10rem;
+    gap: 6rem; 
+}
+.contentsX {
+    margin-left: 15vh;
+    height: 100%;
+}
+ /* --- アコーディオンのスタイル --- */
+.accordion-container {
+    margin: 20px 0;
+}
+details {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background: #fff;
+    overflow: hidden;
+}
+summary {
+    padding: 12px 15px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-family: "Zen Maru Gothic", sans-serif;
+    font-weight: bold;
+    list-style: none; /* デフォルトの三角を消す */
+    position: relative;
+    border-bottom: 1px solid transparent;
+    transition: background-color 0.3s;
+}
+summary:hover {
+    background-color: #f0f0f0;
+}
+/* 開いている時のスタイル */
+details[open] summary {
+    border-bottom: 1px solid #ddd;
+    background-color: #f0f0f0;
+}
+/* 自作の三角アイコン */
+summary::after {
+    content: '＋';
+    position: absolute;
+    right: 15px;
+    color: #a2d025;
+}
+details[open] summary::after {
+    content: '－';
+}
+.accordion-content {
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+/* ---------------------------- */
+
+.wrap-sidebar {
+    margin-right: 8%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 10rem;  /* 左右コンテンツの大きさ */
+    gap: 6rem;  /* コンテンツ間の余白 */
+}
+.sidebar-in {
+    position: sticky;
+    top: 20px;
+    height: 300px;
+}
+.toc-002 {
+    font-family: "Zen Maru Gothic Regular";
+    margin-bottom: 30px;
+    border: 2px solid #a2d025;
+    border-radius: 3px;
+}
+
+.toc-002 div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 10px 0;
+    background-color: #a2d025;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.toc-002 div::before {
+    display: inline-block;
+    height: 1em;
+    content: '';
+}
+
+.toc-002 ol {
+    list-style-type: disc;
+    margin: 0;
+    overflow: hidden;
+}
+
+.toc-002 > ol {
+    padding: 1em 1em 1em 2em;
+}
+
+.toc-002 ol ol {
+    margin-top: 5px;
+    padding-left: 1.1em;
+}
+
+.toc-002 li {
+    color: #ffffff;
+    padding: 5px 0;
+    font-weight: 600;
+}
+
+.toc-002 ol ol li {
+    font-weight: 500;
+    font-size: .9em;
+    color: #ffffff;
+}
+
+.toc-002 a {
+    color: #333;
+    text-decoration: none;
+}
+</style>
+</header>
+<body>
+<div class="sec-in wrap-sidebar">
+  <main class="contentsX">
+
+
+<h1 class="目次" id="000">簡易図</h1>
+<hr>
+<h3>善</h3>
+<p>
+┣すな　　主人公<br>
+┃┗ゐづ　友人<br>
+┗組織<br>
+　┣ひく　オペレーター<br>
+　┣はこ　オペレーター<br>
+　┣せら　清掃アルバイト<br>
+　┣ふじ　戦闘員<br>
+　┗つき　非常戦闘員<br>
+
+</p>
+<h3>悪</h3><p>
+┣あけ　中ボス<br>
+┗しや　ラスボス<br>
+</p>
+
+
+<h1 class="目次" id="200">キャラクター</h1>
+<hr>
+<h1 id="201">スナネコ</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="202">ゐづ</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="203">ふじの</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="204">ひくしー</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="205">せら</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="206">はこ</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="207">つきっこ</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="208">あけろん</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="209">しやくな</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="210">ひとだま</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+<h1 id="211">たぬき</h1><h2></h2>
+<h3></h3>
+<h4></h4>
+<p></p>
+
+<h1 class="目次" id="300">世界設定.システム</h1>
+<hr>
+<p>謎解きアドベンチャー、アクションバトル</p>
+<h1 id="301">コ</h1><h2>魔</h2>
+<p>魔</p>
+<div class="accordion-container">
+<details>
+<summary>a</summary>
+<div class="accordion-content">
+<img  src="https://pbs.twimg.com/media/G8GJQWyaIAAyDnB?format=jpg&name=large">
+<p>a<br>a</p>
+<img  src="https://pbs.twimg.com/media/G8GJQWyaIAAyDnB?format=jpg&name=large">
+<p>a<br>a</p>
+</div>
+</details>
+
+<details>
+<summary>a</summary>
+<div class="accordion-content">
+ &lt;details&gt; ブロックをコピーして下に貼り付け
+</div>
+</details>
+</div>
+<h1 class="目次" id="400">プロット</h1>
+<hr>
+<h2 id="401">コ</h2>
+<p>a</p>
+
+
+
+<hr>
+<p>注釈<br>
+</p>
+<hr>
+<p>思想・理念<br>
+とにかく制作の負担にならないようにすること。<br>
+要素はできるだけ削ぐこと。<br>
+できることなら1年で完成するようなものに仕上げること。<br>
+</p>
+
+
+
+  </main>
+  <aside class="sidebar">
+<div class="sidebar-in">
+<div class="toc-002">
+<div>
+目次
+</div>
+<ol>
+<li><a href="#000">簡易図</a></li>
+<li>
+<a href="#200">キャラ</a>
+<ol>
+<li><a href="#201">すな</a></li>
+<li><a href="#202">ゐづ</a></li>
+<li><a href="#203">ふじ</a></li>
+<li><a href="#204">ひく</a></li>
+<li><a href="#205">せら</a></li>
+<li><a href="#206">はこ</a></li>
+<li><a href="#207">つき</a></li>
+<li><a href="#208">あけ</a></li>
+<li><a href="#209">しや</a></li>
+<li><a href="#210">だま</a></li>
+<li><a href="#211">たぬ</a></li>
+</ol>
+</li>
+<li>
+<a href="#300">舞台</a>
+</li>
+<li>
+<a href="#400">構成</a>
+<ol>
+<li><a href="#401">0-1</a></li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+  </aside>
+</div>
+</body>
+</html>
